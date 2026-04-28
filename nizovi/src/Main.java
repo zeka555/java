@@ -17,10 +17,10 @@ public class Main {
         // ---- OUTPUT SECTION (swap this part!) ----
         System.out.println("Count: " + n);
 
-        int sum = 0;
         for (int i = 0; i < n; i++) {
-            sum += arr[i];          // change this line!
+            if (arr[i] % 2 == 0) {
+                System.out.println(arr[i]);
+            }
         }
-        System.out.println("Sum: " + sum);
     }
 }

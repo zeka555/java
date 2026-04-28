@@ -12,35 +12,31 @@ public class Main {
         // POZIV REKURZIVNE FUNKCIJE
         int faktorijel = faktorijel(5);
         System.out.println("Faktorijel broja 5 je: " + faktorijel);
+
+        System.out.println(jeParan(4)); // true
+        System.out.println(jeParan(5)); // false
     }
 
-
-    // 🔹 1. OBICNA FUNKCIJA (vraca vrijednost)
+    // 🔹 1. OBICNA FUNKCIJA
     public static int saberi(int a, int b) {
-
-        // ova funkcija prima 2 broja i vraca njihov zbir
         return a + b;
     }
 
-
-    // 🔹 2. VOID FUNKCIJA (ne vraca nista)
+    // 🔹 2. VOID FUNKCIJA
     public static void ispisiPoruku(String poruka) {
-
-        // void znaci da funkcija samo izvrsava neku akciju
-        // ovdje samo ispisujemo tekst
         System.out.println("Poruka: " + poruka);
     }
 
-
-    // 🔹 3. REKURZIVNA FUNKCIJA (poziva samu sebe)
+    // 🔹 3. REKURZIVNA FUNKCIJA
     public static int faktorijel(int n) {
-
-        // BASE CASE (uslov za zaustavljanje)
         if (n == 0) {
             return 1;
         }
-
-        // REKURZIVNI POZIV
         return n * faktorijel(n - 1);
+    }
+
+    // 🔹 4. BOOLEAN FUNKCIJA
+    public static boolean jeParan(int broj) {
+        return broj % 2 == 0;
     }
 }
