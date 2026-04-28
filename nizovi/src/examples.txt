@@ -1,0 +1,44 @@
+sabiranje svih elemenata:
+    int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];          // change this line!
+        }
+        System.out.println("Sum: " + sum);
+
+mnozenje sa 2:
+    for (int i = 0; i < n; i++) {
+    System.out.println(arr[i] * 2);
+}
+
+parni brojevi:
+    for (int i = 0; i < n; i++) {
+    if (arr[i] % 2 == 0) {
+        System.out.println(arr[i]);
+    }
+}
+
+neparni brojevi:
+    for (int i = 0; i < n; i++) {
+    if (arr[i] % 2 != 0) {
+        System.out.println(arr[i]);
+    }
+}
+
+najveci broj:
+    int max = arr[0];
+for (int i = 1; i < n; i++) {
+    if (arr[i] > max) {
+        max = arr[i];
+    }
+}
+System.out.println("Max: " + max);
+
+najmanji broj:
+    int min = arr[0];
+for (int i = 1; i < n; i++) {
+    if (arr[i] < min) {
+        min = arr[i];
+    }
+}
+System.out.println("Min: " + min);
+
