@@ -1,0 +1,74 @@
+public class Zadatak1 {
+
+    public static int faktorijel(int n) {
+        if (n == 0 || n == 1) {
+            return 1; // bazni slučaj
+        }
+        return n * faktorijel(n - 1); // rekurzija
+    }
+
+    public static void main(String[] args) {
+        int broj = 5;
+        System.out.println("Faktorijel od " + broj + " je: " + faktorijel(broj));
+    }
+}
+
+
+import java.util.Scanner;
+
+public class Zadatak2 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Unesi dimenziju matrice: ");
+        int n = sc.nextInt();
+
+        int[][] matrica = new int[n][n];
+
+        System.out.println("Unesi elemente matrice:");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrica[i][j] = sc.nextInt();
+            }
+        }
+
+        int suma = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) { // gornja dijagonala
+                if (matrica[i][j] % 2 == 0) {
+                    suma += matrica[i][j];
+                }
+            }
+        }
+
+        System.out.println("Suma parnih brojeva iznad dijagonale: " + suma);
+    }
+}
+
+
+
+import java.util.Scanner;
+
+public class Zadatak3 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Unesi string: ");
+        String tekst = sc.nextLine();
+
+        int brojac = 0;
+
+        for (int i = 0; i < tekst.length(); i++) {
+            char c = tekst.charAt(i);
+
+            if (c == 'M' || c == 'm') {
+                brojac++;
+            }
+        }
+
+        System.out.println("Slovo M se pojavljuje " + brojac + " puta.");
+    }
+}
