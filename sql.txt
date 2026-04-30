@@ -76,3 +76,35 @@ HAVING COUNT(*) > 2;
 SELECT clan_id, SUM(iznos) AS ukupno_placeno
 FROM Clanarina
 GROUP BY clan_id;
+
+
+
+SELECT c.ime, c.prezime, SUM(t.trajanje) AS ukupno_vrijeme
+FROM Clan c
+INNER JOIN Trening t ON c.clan_id = t.clan_id
+GROUP BY c.clan_id;
+
+SELECT c.ime, c.prezime, SUM(t.trajanje) AS ukupno
+FROM Clan c
+JOIN Trening t ON c.clan_id = t.clan_id
+GROUP BY c.clan_id
+HAVING SUM(t.trajanje) > 200;
+
+
+SELECT tr.ime, COUNT(t.trening_id) AS broj_treninga
+FROM Trener tr
+JOIN Trening t ON tr.trener_id = t.trener_id
+GROUP BY tr.trener_id;
+
+
+SELECT tr.ime, COUNT(*) AS broj
+FROM Trener tr
+JOIN Trening t ON tr.trener_id = t.trener_id
+GROUP BY tr.trener_id
+HAVING COUNT(*) > 2;
+
+
+SELECT c.ime, c.prezime, SUM(cl.iznos) AS ukupno_placeno
+FROM Clan c
+JOIN Clanarina cl ON c.clan_id = cl.clan_id
+GROUP BY c.clan_id;
