@@ -1,0 +1,78 @@
+CREATE TABLE Clan (
+    clan_id INT PRIMARY KEY,
+    ime VARCHAR(50),
+    prezime VARCHAR(50),
+    datum_uclanjenja DATE
+);
+
+CREATE TABLE Trener (
+    trener_id INT PRIMARY KEY,
+    ime VARCHAR(50)
+);
+
+CREATE TABLE Trening (
+    trening_id INT PRIMARY KEY,
+    clan_id INT,
+    trener_id INT,
+    datum DATE,
+    trajanje INT, -- u minutama
+    FOREIGN KEY (clan_id) REFERENCES Clan(clan_id),
+    FOREIGN KEY (trener_id) REFERENCES Trener(trener_id)
+);
+
+CREATE TABLE Clanarina (
+    clanarina_id INT PRIMARY KEY,
+    clan_id INT,
+    iznos DECIMAL(10,2),
+    datum_uplate DATE,
+    FOREIGN KEY (clan_id) REFERENCES Clan(clan_id)
+);
+
+-- Clan
+INSERT INTO Clan VALUES
+(1, 'Marko', 'Markovic', '2024-01-10'),
+(2, 'Ivan', 'Ivic', '2024-02-15'),
+(3, 'Petar', 'Petrovic', '2024-03-20');
+
+-- Trener
+INSERT INTO Trener VALUES
+(1, 'Milan'),
+(2, 'Nikola'),
+(3, 'Stefan');
+
+-- Trening
+INSERT INTO Trening VALUES
+(1, 1, 1, '2024-04-01', 60),
+(2, 1, 2, '2024-04-02', 90),
+(3, 2, 1, '2024-04-03', 120),
+(4, 2, 3, '2024-04-04', 100),
+(5, 3, 2, '2024-04-05', 50);
+
+-- Clanarina
+INSERT INTO Clanarina VALUES
+(1, 1, 50.00, '2024-04-01'),
+(2, 1, 50.00, '2024-05-01'),
+(3, 2, 60.00, '2024-04-01'),
+(4, 3, 40.00, '2024-04-01');
+
+SELECT clan_id, SUM(trajanje) AS ukupno_vrijeme
+FROM Trening
+GROUP BY clan_id;
+
+SELECT clan_id, SUM(trajanje) AS ukupno
+FROM Trening
+GROUP BY clan_id
+HAVING SUM(trajanje) > 200;
+
+SELECT trener_id, COUNT(*) AS broj_treninga
+FROM Trening
+GROUP BY trener_id;
+
+SELECT trener_id, COUNT(*) AS broj
+FROM Trening
+GROUP BY trener_id
+HAVING COUNT(*) > 2;
+
+SELECT clan_id, SUM(iznos) AS ukupno_placeno
+FROM Clanarina
+GROUP BY clan_id;
